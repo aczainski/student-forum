@@ -37,7 +37,11 @@ ActiveRecord::Schema.define(version: 20171016174414) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "students_courses", force: :cascade do |t|
+  create_table "students_courses", id: false, force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_students_courses_on_course_id"
+    t.index ["student_id"], name: "index_students_courses_on_student_id"
   end
 
   create_table "topics", force: :cascade do |t|
